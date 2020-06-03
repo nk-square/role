@@ -43,7 +43,7 @@ class RoleServiceProvider extends ServiceProvider
     {
         Blueprint::macro('role',function(){
             $this->string('role_id',20);
-            $this->foreign('role_id')->references->('id')->on(config('role.table'));
+            // $this->foreign('role_id')->references('id')->on(config('role.table'));
         });
     }
 }

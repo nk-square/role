@@ -11,8 +11,8 @@ trait HasRole {
 
     public function hasRole($role)
     {
-    	$roles = explode('|',$role);
+    	$roleArray = is_array($role) ? $role : explode('|',$role);
 
-        return in_array($this->role->id,$role);
+        return in_array($this->role->id,$roleArray);
     }
 }
