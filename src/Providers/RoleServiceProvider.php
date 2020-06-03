@@ -5,6 +5,7 @@ namespace Nksquare\Role\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
 use Nksquare\Role\Console\Commands\RoleTable;
+use Nksquare\Role\Middleware\RoleMiddleware;
 
 class RoleServiceProvider extends ServiceProvider
 {
@@ -37,6 +38,7 @@ class RoleServiceProvider extends ServiceProvider
                 RoleTable::class
             ]);
         }
+        $this->app['router']->aliasMiddleware('role',RoleMiddleware::class);
     }
 
     protected function registerRoleBlueprint()
@@ -44,12 +46,10 @@ class RoleServiceProvider extends ServiceProvider
         Blueprint::macro('role',function(){
             $this->roleColumn();
             $this->roleForeign();
-            // $this->string('role_id',20);
-            // $this->foreign('role_id')->references('id')->on(config('role.table'));
         });
 
         Blueprint::macro('roleColumn',function(){
-            return $this->string('role_id',20);
+            return $this->string('role_id',20)->nullable();
         });
 
         Blueprint::macro('roleForeign',function(){
