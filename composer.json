@@ -1,0 +1,31 @@
+{
+    "name": "nksquare/role",
+    "description": "Laravel user role library",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Thungdemo Ezong",
+            "email": "tezong@nksquare.co.in"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/config": "^5.6",
+        "illuminate/console": "^5.6",
+        "illuminate/database": "^5.6",
+        "illuminate/filesystem": "^5.6",
+        "illuminate/support": "^5.6",
+    },
+    "autoload": {
+        "psr-4": {
+            "Nksquare\\Role\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nksquare\\Role\\Providers\\RoleServiceProvider"
+            ]
+        }
+    }
+}
