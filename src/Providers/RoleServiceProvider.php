@@ -42,8 +42,23 @@ class RoleServiceProvider extends ServiceProvider
     protected function registerRoleBlueprint()
     {
         Blueprint::macro('role',function(){
-            $this->string('role_id',20);
+            $this->roleColumn();
+            $this->roleForeign();
+            // $this->string('role_id',20);
             // $this->foreign('role_id')->references('id')->on(config('role.table'));
+        });
+
+        Blueprint::macro('roleColumn',function(){
+            return $this->string('role_id',20);
+        });
+
+        Blueprint::macro('roleForeign',function(){
+            return $this->foreign('role_id','nksquare_role_id_foreign')->references('id')->on(config('role.table'));
+        });
+
+        Blueprint::macro('dropRole',function(){
+            $this->dropForeign('nksquare_role_id_foreign');
+            return $this->dropColumn('role_id');
         });
     }
 }

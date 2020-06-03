@@ -15,4 +15,10 @@ trait HasRole {
 
         return in_array($this->role->id,$roleArray);
     }
+
+    public function setRole($role)
+    {
+    	$this->role()->associate($role);
+        $this->save();
+    }
 }
