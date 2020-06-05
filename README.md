@@ -3,12 +3,6 @@ User role library
 ## Installation
 Add the following lines to your composer.json file
 ```
-"require": {
-    ......
-    "nksquare/role":"^1.0",
-    ......
-}
-....
 "repositories": [
 {
     "type": "git",
@@ -16,9 +10,9 @@ Add the following lines to your composer.json file
 }]
 .....
 ```
-Then run composer update
+Then run composer install
 ```
-composer update
+composer require nksquare/role
 ```
 Create migration files
 ```
@@ -73,4 +67,8 @@ $user->hasRole('admin');//true
 $user->hasRole('admin|dept|school');//true
 $user->hasRole(['admin','dept','school']);//true
 ```
-
+For adding authorization to routes use the role middleware
+```php
+Route::get('admin-page','AdminPageController@index')->middleware('role:admin');//only user with admin role can access this route
+Route::get('common-page','CommonPageController@index')->middleware('role:admin,dept');//users with admin and dept role can access this route
+```
