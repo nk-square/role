@@ -3,14 +3,15 @@ User role library
 ## Installation
 Add the following lines to your composer.json file
 ```
+....
 "repositories": [
 {
     "type": "git",
     "url": "https://github.com/nk-square/role.git"
-}]
+}],
 .....
 ```
-Then run composer install
+Run composer
 ```
 composer require nksquare/role
 ```
@@ -44,10 +45,6 @@ php artisan migrate
 ```
 Add the HasRole trait to your User model
 ```php
-<?php
-
-namespace App;
-
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Nksquare\Role\HasRole;
 
