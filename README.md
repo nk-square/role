@@ -57,6 +57,7 @@ Add role to your users using the following code
 $user = User::find(1);
 $user->setRole('admin');
 ```
+## Usage
 Check if user has role using the following code
 ```php
 $user->hasRole('admin');//true
