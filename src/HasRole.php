@@ -13,6 +13,11 @@ trait HasRole {
     {
     	$roleArray = is_array($role) ? $role : explode('|',$role);
 
+        if($this->role==null)
+        {
+            return false;
+        }
+
         return in_array($this->role->id,$roleArray);
     }
 
